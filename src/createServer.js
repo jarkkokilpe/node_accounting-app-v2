@@ -133,7 +133,13 @@ function createServer() {
   app.post('/expenses', (req, res) => {
     const { userId, title, amount, category, spentAt, note } = req.body;
 
-    if (!userId || !title || !amount || !category || !spentAt) {
+    if (
+      userId === undefined ||
+      !title ||
+      amount === undefined ||
+      !category ||
+      !spentAt
+    ) {
       return res.status(400).send('All fields are required');
     }
 
